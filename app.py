@@ -42,7 +42,7 @@ def rock_paper_scissors_game():
                                                    result="비겼습니다")
             db.session.add(history)
             db.session.commit()
-            message = f"유저 : {user_choice} 컴퓨터 : {computer_choice} 비겼습니다."
+            message = f"사용자 : {user_choice} 컴퓨터 : {computer_choice} 비겼습니다."
         elif (
                 (user_choice == "✌️" and computer_choice == "✋") or
                 (user_choice == "✊" and computer_choice == "✌️") or
@@ -53,14 +53,14 @@ def rock_paper_scissors_game():
                                                    result="이겼습니다")
             db.session.add(history)
             db.session.commit()
-            message = f"유저 : {user_choice} 컴퓨터 : {computer_choice} 이겼습니다."
+            message = f"사용자 : {user_choice} 컴퓨터 : {computer_choice} 이겼습니다."
         else:
             """진 경우"""
             history = RockPaperScissorsGameHistory(user_choice=user_choice, computer_choice=computer_choice,
                                                    result="졌습니다")
             db.session.add(history)
             db.session.commit()
-            message = f"유저 : {user_choice} 컴퓨터 : {computer_choice} 졌습니다."
+            message = f"사용자 : {user_choice} 컴퓨터 : {computer_choice} 졌습니다."
 
     histories = RockPaperScissorsGameHistory.query.all()
     win = RockPaperScissorsGameHistory.query.filter_by(result="이겼습니다").count()
