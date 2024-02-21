@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>가위바위보 게임</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1 class="my-4">가위바위보 게임</h1>
+
+    <form action="" method="post" class="input-group">
+        <select name="user" class="form-select" aria-label="선택해주세요.">
+            <option value="✌️">✌️</option>
+            <option value="✊">✊</option>
+            <option value="✋">✋</option>
+        </select>
+        <button type="submit" class="btn btn-primary">제출하기</button>
+    </form>
+
+    {% if context.message %}
+        <div class="card mb-4">
+            <div class="card-body bg-primary-100">{{ context.message }}</div>
+        </div>
+    {% endif %}
+
+    <h3>
+        <span class="badge bg-primary">승 : {{ context.win }}</span>
+        <span class="badge bg-primary">무 : {{ context.draw }}</span>
+        <span class="badge bg-primary">패 : {{ context.lose }}</span>
+    </h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">컴퓨터</th>
+            <th scope="col">유저</th>
+            <th scope="col">결과</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for history in context.histories %}
+            <tr>
+                <td>{{ history.id }}</td>
+                <td>{{ history.computer_choice }}</td>
+                <td>{{ history.user_choice }}</td>
+                <td>{{ history.result }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
